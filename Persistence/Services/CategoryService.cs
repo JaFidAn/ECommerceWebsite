@@ -1,5 +1,5 @@
 using Application.Core;
-using Application.DTOs.CategoryDtos;
+using Application.DTOs.Category;
 using Application.Repositories.CategoryRepositories;
 using Application.Services;
 using Application.Utilities;

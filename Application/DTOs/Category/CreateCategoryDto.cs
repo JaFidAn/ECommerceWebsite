@@ -1,4 +1,4 @@
-namespace Application.DTOs.CategoryDtos;
+namespace Application.DTOs.Category;
 
 public class CreateCategoryDto
 {

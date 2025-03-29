@@ -1,5 +1,5 @@
 using Application.Core;
-using Application.DTOs.CategoryDtos;
+using Application.DTOs.Category;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 

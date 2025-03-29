@@ -1,4 +1,4 @@
-using Application.DTOs.CategoryDtos;
+using Application.DTOs.Category;
 using AutoMapper;
 using Domain.Entities;
 
