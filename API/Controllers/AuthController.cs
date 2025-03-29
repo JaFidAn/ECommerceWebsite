@@ -16,6 +16,7 @@ public class AuthController : BaseApiController
         _authService = authService;
     }
 
+    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDto dto)
     {
@@ -23,6 +24,7 @@ public class AuthController : BaseApiController
         return HandleResult(result);
     }
 
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginDto dto)
     {
@@ -30,7 +32,6 @@ public class AuthController : BaseApiController
         return HandleResult(result);
     }
 
-    [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {
@@ -38,7 +39,6 @@ public class AuthController : BaseApiController
         return HandleResult(result);
     }
 
-    [Authorize]
     [HttpGet("current-user")]
     public async Task<IActionResult> GetCurrentUser()
     {

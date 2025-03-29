@@ -1,5 +1,6 @@
 using Application.DTOs.Cart;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -13,6 +14,7 @@ public class CartsController : BaseApiController
         _cartService = cartService;
     }
 
+    [AllowAnonymous]
     [HttpGet("{userId}")]
     public async Task<IActionResult> GetCart(string userId)
     {
@@ -20,6 +22,7 @@ public class CartsController : BaseApiController
         return HandleResult(result);
     }
 
+    [AllowAnonymous]
     [HttpPost("{userId}")]
     public async Task<IActionResult> AddToCart(string userId, AddToCartDto dto)
     {
