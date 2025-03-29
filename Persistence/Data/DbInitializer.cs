@@ -1,12 +1,54 @@
+using Application.Utulity;
+using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Persistence.Contexts.Data;
 
 public class DbInitializer
 {
-    public static async Task SeedData(ApplicationDbContext context)
+    public static async Task SeedData(ApplicationDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
-        await context.SaveChangesAsync();
+        // Seed Roles
+        if (!await roleManager.RoleExistsAsync(SD.Role_Admin))
+        {
+            await roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+        }
+
+        if (!await roleManager.RoleExistsAsync(SD.Role_User))
+        {
+            await roleManager.CreateAsync(new IdentityRole(SD.Role_User));
+        }
+
+        // Seed Admin User
+        if (!userManager.Users.Any())
+        {
+            var adminUser = new AppUser
+            {
+                FullName = "Rasim Alagezov",
+                UserName = "rasim",
+                Email = "r.alagezov@gmail.com",
+                EmailConfirmed = true
+            };
+
+            var result = await userManager.CreateAsync(adminUser, SD.Admin_Password);
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(adminUser, SD.Role_Admin);
+            }
+        }
+
+        // Seed Categories
+        if (!context.Categories.Any())
+        {
+            var categories = new List<Category>
+        {
+            new Category { Name = "Example 1" },
+            new Category { Name = "Example 2" },
+            new Category { Name = "Example 3" }
+        };
+
+            context.Categories.AddRange(categories);
+            await context.SaveChangesAsync();
+        }
     }
 }
-
-

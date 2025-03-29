@@ -12,9 +12,9 @@ public static class SwaggerServiceExtensions
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "Movie Website API",
+                Title = "E-Commerce Website API",
                 Version = "v1",
-                Description = "Endpoints for managing movies and genres."
+                Description = "Endpoints for E-Commerce website"
             });
 
             var jwtSecurityScheme = new OpenApiSecurityScheme
@@ -51,7 +51,7 @@ public static class SwaggerServiceExtensions
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Movie Website API v1");
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "E-Commerce Website API v1");
         });
 
         return app;

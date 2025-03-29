@@ -1,5 +1,5 @@
 using Application.Core;
-using Application.DTOs.CategoryDtos;
+using Application.DTOs.Category;
 
 namespace Application.Services;
 
