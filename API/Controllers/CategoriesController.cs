@@ -1,6 +1,7 @@
 using Application.Core;
 using Application.DTOs.Category;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -14,6 +15,7 @@ public class CategoriesController : BaseApiController
         _categoryService = categoryService;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] PaginationParams paginationParams, CancellationToken cancellationToken)
     {
@@ -21,6 +23,7 @@ public class CategoriesController : BaseApiController
         return HandleResult(result);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
     {

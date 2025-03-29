@@ -13,4 +13,5 @@ public class Order : BaseEntity
 
     // Navigation
     public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public Payment? Payment { get; set; }
 }
